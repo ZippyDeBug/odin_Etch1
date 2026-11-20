@@ -1,11 +1,11 @@
 
 console.log("test!");
 
-//  const for query selector "container"
-//  const for container width
+//  const for query selector "screen"
+//  const for screen width
 //  const for color of the "sketch" trail
-const container = document.querySelector("#container");
-const containerWidth = container.clientWidth;
+const screen = document.querySelector("#screen");
+const screenWidth = screen.clientWidth;
 const hoverColor = "#a9a9a9"
 
 //grid creation with gridXY, assuming always square
@@ -15,8 +15,8 @@ function gridCreate(gridXY) {
     // Calculate cell width
     // clear children in case multiple calls of function
     const sum = gridXY * gridXY;
-    const cellWidth = (containerWidth/gridXY);
-    container.replaceChildren()
+    const cellWidth = (screenWidth/gridXY);
+    screen.replaceChildren()
 
     //loop based on the sum amount
     //new const (within loop) for creating div element
@@ -24,7 +24,7 @@ function gridCreate(gridXY) {
     // add class to divs grid
     // specify cell width and height
     //add event listener to each cell div to change color when hovered.
-    //append new create div const to container
+    //append new create div const to screen
     for(let i = 1; i <= sum; i++) {
         const etchDiv = document.createElement("div");
         etchDiv.id = `grid${i}`;
@@ -32,7 +32,7 @@ function gridCreate(gridXY) {
         etchDiv.style.width = `${cellWidth}px`;
         etchDiv.style.height = `${cellWidth}px`; 
         etchDiv.addEventListener("mouseover", ()=>{etchDiv.style.backgroundColor = `${hoverColor}`});
-        container.append(etchDiv);  
+        screen.append(etchDiv);  
     }
     
 //console log out side of loop to confirm done.

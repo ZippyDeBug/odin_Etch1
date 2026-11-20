@@ -13,6 +13,7 @@ function gridCreate(gridXY) {
 
     // sum gridXY by itself to total number of divs
     // Calculate cell width
+    // clear children in case multiple calls of function
     const sum = gridXY * gridXY;
     const cellWidth = (containerWidth/gridXY);
     container.replaceChildren()

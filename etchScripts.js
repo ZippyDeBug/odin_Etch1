@@ -15,6 +15,7 @@ function gridCreate(gridXY) {
     // Calculate cell width
     const sum = gridXY * gridXY;
     const cellWidth = (containerWidth/gridXY);
+    container.replaceChildren()
 
     //loop based on the sum amount
     //new const (within loop) for creating div element
@@ -38,5 +39,3 @@ console.log(`done grid of ${gridXY} by ${gridXY}`);
 
 //run grid creation command
 gridCreate(16);
-
-

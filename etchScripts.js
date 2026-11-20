@@ -5,10 +5,9 @@ console.log("test!");
 // create const for container width
 const container = document.querySelector("#container");
 const containerWidth = container.clientWidth;
-
+const hoverColor = "#a9a9a9"
 
 //create function for grid creation with gridXY, assuming always square
-
 function gridCreate(gridXY) {
 
     // sum gridXY by itself to total number of divs
@@ -23,19 +22,20 @@ function gridCreate(gridXY) {
     //set id of new div to grid and loop number
     // add class to divs grid
     // specify cell width and height
+    //add event listener to each cell div to change color when hovered.
     //append new create div const to container
     for(let i = 1; i <= sum; i++) {
         const etchDiv = document.createElement("div");
         etchDiv.id = `grid${i}`;
         etchDiv.classList.add("grid");
         etchDiv.style.width = `${cellWidth}px`;
-        etchDiv.style.height = `${cellWidth}px`;  
+        etchDiv.style.height = `${cellWidth}px`; 
+        etchDiv.addEventListener("mouseover", ()=>{etchDiv.style.backgroundColor = `${hoverColor}`});
         container.append(etchDiv);  
     }
     
 //console log out side of loop to confirm done.
 console.log(`done grid of ${gridXY} by ${gridXY}`);
-
 };
 
 //run grid creation command

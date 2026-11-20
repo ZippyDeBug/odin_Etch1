@@ -1,13 +1,14 @@
 
 console.log("test!");
 
-// Create const for query selector "container"
-// create const for container width
+//  const for query selector "container"
+//  const for container width
+//  const for color of the "sketch" trail
 const container = document.querySelector("#container");
 const containerWidth = container.clientWidth;
 const hoverColor = "#a9a9a9"
 
-//create function for grid creation with gridXY, assuming always square
+//grid creation with gridXY, assuming always square
 function gridCreate(gridXY) {
 
     // sum gridXY by itself to total number of divs
@@ -40,3 +41,21 @@ console.log(`done grid of ${gridXY} by ${gridXY}`);
 
 //run grid creation command
 gridCreate(16);
+
+// queryselector to detect the retsart button
+//event listener for the restart buttons
+const btnRestart = document.querySelector("#restart")
+btnRestart.addEventListener("click", restart)
+
+//function to prompt for cell count and recreate the grid with the chosen amount.
+function restart() {
+    let cells = parseInt(prompt("How many squares per side do you want? (max 100)"));
+        if (cells > 100) {
+            alert(`Error! 
+            max of 100`);
+            restart();
+        }
+        else if (cells > 0) {
+            gridCreate(cells);             
+        }
+}

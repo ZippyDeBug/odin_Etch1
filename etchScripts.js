@@ -18,11 +18,19 @@ function gridCreate(gridHeight, gridWidth) {
     let sum = gridHeight * gridWidth;
     for(let i = 1; i <= sum; i++) {
     const etchDiv = document.createElement("div");
-    etchDiv.id = `grid ${i}`;
+    etchDiv.id = `grid${i}`;
+    etchDiv.classList = "grid"
     container.append(etchDiv);
+    const grid = document.querySelector(`#grid${i}`);
+    grid.style.backgroundColor = "grey";
+    grid.style.width = "10px";
+    grid.style.height = "10px";
+    grid.style.border = "1px, solid, black"    
     }
 console.log(`done grid of ${gridHeight} by ${gridWidth}`)
 };
 
 //run grid creation command
 gridCreate(16, 16)
+
+

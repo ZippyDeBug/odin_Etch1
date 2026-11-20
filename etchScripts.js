@@ -3,10 +3,22 @@ console.log("test!");
 
 //  const for query selector "screen"
 //  const for screen width
-//  const for color of the "sketch" trail
 const screen = document.querySelector("#screen");
 const screenWidth = screen.clientWidth;
-const hoverColor = "#a9a9a9"
+
+
+
+
+function getRandomRgb() {
+  const num = Math.round(0xffffff * Math.random());
+  let r = num >> 16;
+  let g = num >> 8 & 255;
+  let b = num & 255;
+  return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+}
+
+//  const for color of the "sketch" trail
+const hoverColor = getRandomRgb()
 
 //grid creation with gridXY, assuming always square
 function gridCreate(gridXY) {
@@ -31,7 +43,13 @@ function gridCreate(gridXY) {
         etchDiv.classList.add("grid");
         etchDiv.style.width = `${cellWidth}px`;
         etchDiv.style.height = `${cellWidth}px`; 
-        etchDiv.addEventListener("mouseover", ()=>{etchDiv.style.backgroundColor = `${hoverColor}`});
+        etchDiv.addEventListener("mouseover", ()=>{ 
+            if (etchDiv.style.backgroundColor === "") {
+                etchDiv.style.backgroundColor = `${getRandomRgb()}`;
+                };
+            {etchDiv.style.opacity -= `-.2`;
+            }
+        });
         screen.append(etchDiv);  
     }
     
@@ -42,7 +60,7 @@ console.log(`done grid of ${gridXY} by ${gridXY}`);
 //run grid creation command
 gridCreate(16);
 
-// queryselector to detect the retsart button
+// query selector to detect the restart button
 //event listener for the restart buttons
 const btnRestart = document.querySelector("#restart")
 btnRestart.addEventListener("click", restart)

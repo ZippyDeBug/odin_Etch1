@@ -1,41 +1,42 @@
 
-console.log("test!")
+console.log("test!");
 
-//Create const for query selector "container"
-//create const for div element creation.
+// Create const for query selector "container"
+// create const for container width
 const container = document.querySelector("#container");
-const existingDiv = document.querySelector("div")
+const containerWidth = container.clientWidth;
 
 
-//create function for grid creation with grid height and width parameters.
-// sum height and width to total number of divs
-function gridCreate(gridHeight, gridWidth) {
+//create function for grid creation with gridXY, assuming always square
+
+function gridCreate(gridXY) {
+
+    // sum gridXY by itself to total number of divs
+    // Calculate cell width
+    const sum = gridXY * gridXY;
+    const cellWidth = (containerWidth/gridXY);
 
     //loop based on the sum amount
     //new const (within loop) for creating div element
-    //set id of new div to grid and loop number.
+    //set id of new div to grid and loop number
+    // add class to divs grid
+    // specify cell width and height
     //append new create div const to container
-    let sum = gridHeight * gridWidth;
     for(let i = 1; i <= sum; i++) {
-    const etchDiv = document.createElement("div");
-    etchDiv.id = `grid${i}`;
-    etchDiv.classList = "grid"
-    container.append(etchDiv);
-    
-    // new 'cell' const for new divs to allow styling.
-    // background colour set to grey, div width set and height set, border to illustrate cell edge.
-    const cell = document.querySelector(`#grid${i}`);
-    cell.style.backgroundColor = "grey";
-    cell.style.width = "10px";
-    cell.style.height = "10px";
-    cell.style.border = "1px, solid, black"    
+        const etchDiv = document.createElement("div");
+        etchDiv.id = `grid${i}`;
+        etchDiv.classList.add("grid");
+        etchDiv.style.width = `${cellWidth}px`;
+        etchDiv.style.height = `${cellWidth}px`;  
+        container.append(etchDiv);  
     }
-
+    
 //console log out side of loop to confirm done.
-console.log(`done grid of ${gridHeight} by ${gridWidth}`)
+console.log(`done grid of ${gridXY} by ${gridXY}`);
+
 };
 
 //run grid creation command
-gridCreate(16, 16)
+gridCreate(16);
 
 

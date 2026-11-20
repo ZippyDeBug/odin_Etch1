@@ -1,0 +1,12 @@
+#container {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+}
+
+.grid {
+    background-color: grey;
+    box-shadow: 0 0 0 1px darkgrey;
+}
